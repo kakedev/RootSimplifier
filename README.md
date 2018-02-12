@@ -1,2 +1,2 @@
 # RootSimplifier
-Simple script to simply mathematical roots
+Simple script to simplify mathematical roots
