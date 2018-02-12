@@ -1,201 +1,35 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simplificador de Radicais</title>
+    <script type="text/javascript" src="roots.js"></script>
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
 
-<head>
-    <meta charset="UTF-8">
-    <!-- generator meta tag -->
-    <!-- leave this for stats and Silex version check -->
-    <meta name="generator" content="Silex v2.2.7">
-    <!-- End of generator meta tag -->
-    <script type="text/javascript" src="//editor.silex.me/static/2.7/jquery.js" data-silex-static=""></script>
-    <script type="text/javascript" src="//editor.silex.me/static/2.7/jquery-ui.js" data-silex-static=""></script>
-    <script type="text/javascript" src="//editor.silex.me/static/2.7/pageable.js" data-silex-static=""></script>
-    <script type="text/javascript" src="//editor.silex.me/static/2.7/front-end.js" data-silex-static=""></script>
-    <link rel="stylesheet" href="//editor.silex.me/static/2.7/normalize.css" data-silex-static="">
-    <link rel="stylesheet" href="//editor.silex.me/static/2.7/front-end.css" data-silex-static="">
-
-    <style type="text/css" class="silex-style"></style>
-    <script type="text/javascript" class="silex-script"></script>
-    <style class="silex-inline-styles" type="text/css">
-        .body-initial {
-            background-color: rgba(255, 255, 255, 1);
-        }
-        
-        .silex-id-1478366444112-1 {
-            top: 100px;
-            left: NaNpx;
-            background-color: transparent;
-        }
-        
-        .silex-id-1478366444112-0 {
-            min-height: 100px;
-            background-color: transparent;
-            width: 1200px;
-        }
-        
-        .silex-id-1495639826170-0 {
-            min-height: 117px;
-            width: 253px;
-            top: -3px;
-            left: 477px;
-        }
-        
-        .silex-id-1474394621033-3 {
-            top: 5px;
-            left: 0px;
-        }
-        
-        .silex-id-1474394621032-2 {
-            min-height: 600px;
-            background-color: transparent;
-            width: 1200px;
-        }
-        
-        .silex-id-1495640993053-2 {
-            min-height: 147px;
-            width: 270px;
-            top: 12px;
-            left: 446px;
-        }
-        
-        .silex-id-1495639928468-1 {
-            min-height: 44px;
-            width: 94px;
-            background-color: rgb(255, 255, 255);
-            top: 90px;
-            left: 375px;
-        }
-        
-        .silex-id-1495641079529-3 {
-            min-height: 44px;
-            width: 110px;
-            background-color: rgb(255, 255, 255);
-            top: 72px;
-            left: 541px;
-        }
-        
-        .silex-id-1495641082028-4 {
-            min-height: 30px;
-            width: 56px;
-            background-color: rgb(255, 255, 255);
-            top: 19px;
-            left: 456px;
-        }
-        
-        .silex-id-1495641196503-5 {
-            min-height: 29px;
-            width: 57px;
-            background-color: rgb(255, 255, 255);
-            top: 34px;
-            left: 639px;
-        }
-        
-        .silex-id-1495641306535-6 {
-            min-height: 44px;
-            width: 179px;
-            background-color: rgb(255, 255, 255);
-            top: 169px;
-            left: 497px;
-        }
-        
-        .silex-id-1495641379893-7 {
-            min-height: 128px;
-            width: 177px;
-            background-color: rgb(255, 255, 255);
-            top: 223px;
-            left: 496px;
-        }
-    </style>
-    <title></title>
-    <script type="text/javascript" class="silex-json-styles">
-        [{"desktop":{"body-initial":{"background-color":"rgba(255,255,255,1)"},"silex-id-1474394621033-3":{"top":"5px","left":"0px"},"silex-id-1474394621032-2":{"min-height":"600px","background-color":"transparent","width":"1200px"},"silex-id-1474394605264-1":{"min-height":"100px","width":"100px","top":"100px","left":"100px"},"silex-id-1474394605263-0":{"min-height":"100px","background-color":"transparent"},"silex-id-1478366444112-0":{"min-height":"100px","background-color":"transparent","width":"1200px"},"silex-id-1478366444112-1":{"top":"100px","left":"NaNpx","background-color":"transparent"},"silex-id-1478366450713-2":{"min-height":"100px","background-color":"transparent","width":"1200px"},"silex-id-1495639826170-0":{"min-height":"117px","width":"253px","top":"-3px","left":"477px"},"silex-id-1495639928468-1":{"min-height":"44px","width":"94px","background-color":"rgb(255, 255, 255)","top":"90px","left":"375px"},"silex-id-1495640993053-2":{"min-height":"147px","width":"270px","top":"12px","left":"446px"},"silex-id-1495641079529-3":{"min-height":"44px","width":"110px","background-color":"rgb(255, 255, 255)","top":"72px","left":"541px"},"silex-id-1495641082028-4":{"min-height":"30px","width":"56px","background-color":"rgb(255, 255, 255)","top":"19px","left":"456px"},"silex-id-1495641196503-5":{"min-height":"29px","width":"57px","background-color":"rgb(255, 255, 255)","top":"34px","left":"639px"},"silex-id-1495641306535-6":{"min-height":"44px","width":"179px","background-color":"rgb(255, 255, 255)","top":"169px","left":"497px"},"silex-id-1495641379893-7":{"min-height":"128px","width":"177px","background-color":"rgb(255, 255, 255)","top":"223px","left":"496px"}},"mobile":{},"componentData":{}}]
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML">
     </script>
 
+  </head>
 
-
-
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.2" data-silex-viewport="">
-
-
-    <meta name="website-width" content="1200">
-    <style type="text/css" class="silex-style-settings">
-        .website-width {
-            width: 1200px;
-        }
-        
-        .website-min-width {
-            min-width: 1500px;
-        }
-    </style>
-
-    <style id="current-page-style">
-        .page-main {
-            display: inherit;
-        }
-    </style>
-    <!-- Silex HEAD tag do not remove -->
-    <!-- End of Silex HEAD tag do not remove -->
-</head>
-
-<body data-silex-id="body-initial" class="body-initial enable-mobile silex-runtime" data-silex-type="container">
-    <div class="silex-pages">
-
-
-        <a id="page-main" data-silex-type="page" class="page-element page-link-active">Main</a></div>
-
-
-
-
-
-
-
-
-
-    <div data-silex-type="container" class="prevent-draggable container-element editable-style silex-id-1478366444112-1 section-element website-min-width" data-silex-id="silex-id-1478366444112-1" style="">
-        <div data-silex-type="container" class="editable-style silex-element-content silex-id-1478366444112-0 silex-container-content container-element prevent-draggable website-width" data-silex-id="silex-id-1478366444112-0">
-            <div data-silex-type="text" class="editable-style silex-id-1495639826170-0 text-element" data-silex-id="silex-id-1495639826170-0">
-                <div class="silex-element-content normal">
-                    <h1 style="text-align: center;" class="heading1">Simplificador de Radicais</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div data-silex-type="container" class="prevent-draggable container-element editable-style silex-id-1474394621033-3 section-element website-min-width" data-silex-id="silex-id-1474394621033-3" style="">
-        <div data-silex-type="container" class="editable-style silex-element-content silex-id-1474394621032-2 silex-container-content container-element prevent-draggable website-width" data-silex-id="silex-id-1474394621032-2">
-            <div data-silex-type="image" class="editable-style silex-id-1495640993053-2 image-element" data-silex-id="silex-id-1495640993053-2"><img src="sqrt-800px.png" class="silex-element-content"></div>
-            <div data-silex-type="html" class="editable-style silex-id-1495639928468-1 html-element" data-silex-id="silex-id-1495639928468-1">
-                <div class="silex-element-content"><input type="number" name="coeficient" id="coeficient" value="" size="1" style="font-size:25pt"></div>
-            </div>
-            <div data-silex-type="html" class="editable-style silex-id-1495641079529-3 html-element" data-silex-id="silex-id-1495641079529-3">
-                <div class="silex-element-content"><input type="number" name="radicand" id="radicand" value="" size="2" style="font-size: 25pt"></div>
-            </div>
-            <div data-silex-type="html" class="editable-style html-element silex-id-1495641082028-4" data-silex-id="silex-id-1495641082028-4">
-                <div class="silex-element-content"><input type="number" name="index" id="index" value="" size="1" style="font-size:15pt"></div>
-            </div>
-            <div data-silex-type="html" class="editable-style silex-id-1495641196503-5 html-element" data-silex-id="silex-id-1495641196503-5">
-                <div class="silex-element-content"><input type="number" name="exponent" id="exponent" value="" size="1" style="font-size: 15pt"></div>
-            </div>
-            <div data-silex-type="html" class="editable-style silex-id-1495641306535-6 html-element" data-silex-id="silex-id-1495641306535-6">
-                <div class="silex-element-content"><input type="button" name="simplify" id="simplify" value="Simplificar!" style="font-size: 25pt"></div>
-            </div>
-            <div data-silex-type="container" class="editable-style silex-id-1495641379893-7 container-element" data-silex-id="silex-id-1495641379893-7"></div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
-
+  <body>
+    <h1>Simplificador de Radicais</h1>
+    Coeficiente: <input type="number" value="1" id="coeficient" /> <br/> <br/>
+    Indice: <input type="number" value="2" id="index" min="2"/> <br/> <br/>
+    Radicando: <input type="number" value="1" id="radicand" /> <br/> <br/>
+    Expoente: <input type="number" value="1" id="exponent" /> <br/> <br/>
+    <input type="button" value="Simplificar!" onclick="execute()"/> <br/> <br/> <br/>
+    <span id="answer" style="font-size: 20pt"></span>
+  </body>
 </html>
